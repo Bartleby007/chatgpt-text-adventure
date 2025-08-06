@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>10-Room Text Adventure</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game">
+    <h1>Text Adventure</h1>
+    <div id="room-description"></div>
+
+    <div id="compass">
+      <div class="row">
+        <button id="move-nw">NW</button>
+        <button id="move-n">N</button>
+        <button id="move-ne">NE</button>
+      </div>
+      <div class="row">
+        <button id="move-w">W</button>
+        <button disabled>•</button>
+        <button id="move-e">E</button>
+      </div>
+      <div class="row">
+        <button id="move-sw">SW</button>
+        <button id="move-s">S</button>
+        <button id="move-se">SE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
