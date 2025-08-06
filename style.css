@@ -1,0 +1,56 @@
+body {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#game {
+  text-align: center;
+  max-width: 600px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+#room-description {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  min-height: 60px;
+}
+
+#compass {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+#compass .row {
+  display: contents;
+}
+
+#compass button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+#compass button:hover:enabled {
+  background-color: #555;
+}
+
+#compass button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
