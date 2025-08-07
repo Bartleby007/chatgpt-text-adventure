@@ -24,5 +24,60 @@
       "nw": "Rolling Dunes"
     }
   },
-  ...
+  "W-Beach-1": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "Sandy-Shores",
+      "w": "W-Beach-2"
+    }
+  },
+  "W-Beach-2": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "W-Beach-1",
+      "w": "W-Beach-3"
+    }
+  },
+  "W-Beach-3": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "W-Beach-2",
+      "w": "W-Beach-4"
+    }
+  },
+  "W-Beach-4": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "W-Beach-3",
+      "w": "W-Beach-5"
+    }
+  },
+  "W-Beach-5": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "W-Beach-4",
+      "w": "Sandy-Forest"
+    }
+  },
+  "E-Beach-1": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "E-Beach-2",
+      "w": "Sandy-Shores"
+    }
+  },
+  "E-Beach-2": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "E-Beach-3",
+      "w": "E-Beach-1"
+    }
+  }
 }
