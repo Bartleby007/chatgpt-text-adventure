@@ -1,52 +1,135 @@
 {
-  "forest": {
-    "name": "Forest Clearing",
-    "description": "You stand in a quiet forest clearing. Birds chirp above.",
-    "exits": { "n": "hill", "e": "stream", "s": "swamp" }
+  "Circle-of-Light": {
+    "name": "Circle of Light",
+    "description": "You are standing in a circle of light.  All around you is an inpenetrable darkness.  The circle of light has a faint rainbow around its perimeter.",
+    "exits": {
+      "n": "Sandy-Shores",
+      "ne": "Sandy-Shores",
+      "e": "Sandy-Shores",
+      "se": "Sandy-Shores",
+      "s": "Sandy-Shores",
+      "sw": "Sandy-Shores",
+      "w": "Sandy-Shores",
+      "nw": "Sandy-Shores"
+    }
   },
-  "hill": {
-    "name": "Grassy Hill",
-    "description": "From atop the hill, you see the forest below and a path east.",
-    "exits": { "s": "forest", "e": "tower" }
+  "Sandy-Shores": {
+    "name": "Sandy Shores",
+    "description": "You arrive at the edge of the water.  There is a circle burned into the sand that sparkles with many colors in the sunlight.  The beach extends to the east and west.  The ocean waves crash from the south.  The sand dunes extend endlessly to the north.",
+    "exits": {
+      "n": "Rolling-Dunes",
+      "ne": "Rolling-Dunes",
+      "e": "E-Beach-1",
+      "w": "W-Beach-1",
+      "nw": "Rolling-Dunes"
+    }
   },
-  "stream": {
-    "name": "Trickling Stream",
-    "description": "A narrow stream flows south. You hear frogs nearby.",
-    "exits": { "w": "forest", "s": "bridge" }
+  "W-Beach-1": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "Sandy-Shores",
+      "w": "W-Beach-2"
+    }
   },
-  "swamp": {
-    "name": "Murky Swamp",
-    "description": "The ground squelches with every step. Mist coils in the air.",
-    "exits": { "n": "forest", "e": "bridge", "s": "ruins" }
+  "W-Beach-2": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  There are piles of seaweed scattered around the tide lines.",
+    "exits": {
+      "e": "W-Beach-1",
+      "w": "W-Beach-3"
+    }
   },
-  "tower": {
-    "name": "Watchtower",
-    "description": "You climb a crumbling tower. Wind whistles through cracks.",
-    "exits": { "w": "hill", "s": "bridge" }
+  "W-Beach-3": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Loose seashells mix into the sand around you.",
+    "exits": {
+      "e": "W-Beach-2",
+      "w": "W-Beach-4"
+    }
   },
-  "bridge": {
-    "name": "Wooden Bridge",
-    "description": "A rickety bridge crosses the water. It sways gently.",
-    "exits": { "n": "stream", "w": "swamp", "e": "cabin", "s": "cave", "nw": "tower" }
+  "W-Beach-4": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Sparse areas of grass can be seen aroud the sand dunes",
+    "exits": {
+      "e": "W-Beach-3",
+      "w": "W-Beach-5"
+    }
   },
-  "cabin": {
-    "name": "Old Cabin",
-    "description": "A cozy old cabin with a broken lock and dusty windows.",
-    "exits": { "w": "bridge" }
+  "W-Beach-5": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Low shrubs with prickly spines grow out of the dunes here and there.",
+    "exits": {
+      "e": "W-Beach-4",
+      "w": "Sandy-Forest"
+    }
   },
-  "cave": {
-    "name": "Dark Cave",
-    "description": "It’s dark and cold. Water drips from above.",
-    "exits": { "n": "bridge", "s": "gate" }
+  "E-Beach-1": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "exits": {
+      "e": "E-Beach-2",
+      "w": "Sandy-Shores"
+    }
   },
-  "ruins": {
-    "name": "Ancient Ruins",
-    "description": "Moss-covered stones hint at a forgotten civilization.",
-    "exits": { "n": "swamp", "e": "gate" }
+  "E-Beach-2": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the sandy beach.  Large rocks emerge out of the sand throughout the beach.",
+    "exits": {
+      "e": "E-Beach-3",
+      "w": "E-Beach-1"
+    }
   },
-  "gate": {
-    "name": "Iron Gate",
-    "description": "An ancient iron gate blocks the path beyond.",
-    "exits": { "n": "cave", "w": "ruins" }
+  "E-Beach-3": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the beach.  The sand meets the edge of a rocky shore continuing to the east.",
+    "exits": {
+      "e": "Cliffs-Base",
+      "w": "E-Beach-2"
+    }
+  },
+  "Rolling-Dunes": {
+    "name": "Rolling Dunes",
+    "description": "You trudge through the hot sand.  The dunes extend in every direction as far as you can see.  The ocean is to the south.",
+    "exits": {
+      "n": "Sandstorm",
+      "s": "Sandy-Shores"
+    }
+  },
+  "Sandstorm": {
+    "name": "Sandstorm",
+    "description": "You enter a swirling sandstorm.  The blowing sand blinds you and you lose all sense of direction.",
+    "exits": {
+      "n": "Rolling-Dunes",
+      "ne": "Rolling-Dunes",
+      "e": "Rolling-Dunes",
+      "se": "Rolling-Dunes",
+      "s": "Rolling-Dunes",
+      "sw": "Rolling-Dunes",
+      "w": "Rolling-Dunes",
+      "nw": "Rolling-Dunes"
+    }
+  },
+  "Sandy-Forest": {
+    "name": "Sandy Forest",
+    "description": "There are scattered trees growing along the beach and into the dunes.  The roots of the trees curl up out of the sand covered in long thorns.",
+    "exits": {
+      "e": "W-Beach-5",
+      "w": "Tangled-Roots"
+    }
+  },
+   "Tangled-Roots": {
+    "name": "Tangled Roots",
+    "description": "The tree roots tangle together making the beach impassable.",
+    "exits": {
+      "e": "Sandy-Forest"
+    }
+  },
+  "Cliffs-Base": {
+    "name": "Cliff's Base",
+    "description": "You are at the base of a towering sheer rock face.  The cliffs extend off into the dunes.  Occaisonally you hear a muffled boom rolling across the waves.",
+    "exits": {
+      "w": "E-Beach-3"
+    }
   }
 }

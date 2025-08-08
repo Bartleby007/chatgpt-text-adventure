@@ -1,5 +1,5 @@
 let rooms = {};
-let currentRoom = "forest";
+let currentRoom = "Circle-of-Light";
 
 function updateRoom() {
   const room = rooms[currentRoom];
