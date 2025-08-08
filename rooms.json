@@ -17,11 +17,11 @@
     "name": "Sandy Shores",
     "description": "You arrive at the edge of the water.  There is a circle burned into the sand that sparkles with many colors in the sunlight.  The beach extends to the east and west.  The ocean waves crash from the south.  The sand dunes extend endlessly to the north.",
     "exits": {
-      "n": "Rolling Dunes",
-      "ne": "Rolling Dunes",
+      "n": "Rolling-Dunes",
+      "ne": "Rolling-Dunes",
       "e": "E-Beach-1",
       "w": "W-Beach-1",
-      "nw": "Rolling Dunes"
+      "nw": "Rolling-Dunes"
     }
   },
   "W-Beach-1": {
