@@ -90,7 +90,7 @@
   },
   "Rolling-Dunes": {
     "name": "Rolling Dunes",
-    "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
+    "description": "You trudge through the hot sand.  The dunes extend in every direction as far as you can see.  The ocean is to the south.",
     "exits": {
       "n": "Sandstorm",
       "s": "Sandy-Shores"
@@ -103,7 +103,7 @@
       "n": "Rolling-Dunes",
       "ne": "Rolling-Dunes",
       "e": "Rolling-Dunes",
-      "se": "Rolling-Duness",
+      "se": "Rolling-Dunes",
       "s": "Rolling-Dunes",
       "sw": "Rolling-Dunes",
       "w": "Rolling-Dunes",
@@ -112,7 +112,7 @@
   },
   "Sandy-Forest": {
     "name": "Sandy Forest",
-    "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
+    "description": "There are scattered trees growing along the beach and into the dunes.  The roots of the trees curl up out of the sand covered in long thorns.",
     "exits": {
       "e": "W-Beach-5",
       "w": "Tangled-Roots"
