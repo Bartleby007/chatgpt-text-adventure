@@ -79,7 +79,7 @@
       "e": "E-Beach-3",
       "w": "E-Beach-1"
     }
-  }
+  },
   "E-Beach-3": {
     "name": "Oceanside Beach",
     "description": "You are walking along the beach.  The sand meets the edge of a rocky shore continuing to the east.",
@@ -87,7 +87,7 @@
       "e": "Cliffs-Base",
       "w": "E-Beach-2"
     }
-  }
+  },
   "Rolling-Dunes": {
     "name": "Rolling Dunes",
     "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
@@ -95,7 +95,7 @@
       "n": "Sandstorm",
       "s": "Sandy-Shores"
     }
-  }
+  },
   "Sandstorm": {
     "name": "Sandstorm",
     "description": "You enter a swirling sandstorm.  The blowing sand blinds you and you lose all sense of direction.",
@@ -109,7 +109,7 @@
       "w": "Rolling-Dunes",
       "nw": "Rolling-Dunes"
     }
-  }
+  },
   "Sandy-Forest": {
     "name": "Sandy Forest",
     "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
@@ -117,14 +117,14 @@
       "e": "W-Beach-5",
       "w": "Tangled-Roots"
     }
-  }
+  },
    "Tangled-Roots": {
     "name": "Tangled Roots",
     "description": "The tree roots tangle together making the beach impassable.",
     "exits": {
       "e": "Sandy-Forest"
     }
-  }
+  },
   "Cliffs-Base": {
     "name": "Cliff's Base",
     "description": "You are at the base of a towering sheer rock face.  The cliffs extend off into the dunes.  Occaisonally you hear a muffled boom rolling across the waves.",
