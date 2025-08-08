@@ -34,7 +34,7 @@
   },
   "W-Beach-2": {
     "name": "Oceanside Beach",
-    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "description": "You are walking along the sandy beach.  There are piles of seaweed scattered around the tide lines.",
     "exits": {
       "e": "W-Beach-1",
       "w": "W-Beach-3"
@@ -42,7 +42,7 @@
   },
   "W-Beach-3": {
     "name": "Oceanside Beach",
-    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "description": "You are walking along the sandy beach.  Loose seashells mix into the sand around you.",
     "exits": {
       "e": "W-Beach-2",
       "w": "W-Beach-4"
@@ -50,7 +50,7 @@
   },
   "W-Beach-4": {
     "name": "Oceanside Beach",
-    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "description": "You are walking along the sandy beach.  Sparse areas of grass can be seen aroud the sand dunes",
     "exits": {
       "e": "W-Beach-3",
       "w": "W-Beach-5"
@@ -58,7 +58,7 @@
   },
   "W-Beach-5": {
     "name": "Oceanside Beach",
-    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "description": "You are walking along the sandy beach.  Low shrubs with prickly spines grow out of the dunes here and there.",
     "exits": {
       "e": "W-Beach-4",
       "w": "Sandy-Forest"
@@ -74,10 +74,62 @@
   },
   "E-Beach-2": {
     "name": "Oceanside Beach",
-    "description": "You are walking along the sandy beach.  Large waves crash to the south of you.  There are rolling sand dunes to the north.",
+    "description": "You are walking along the sandy beach.  Large rocks emerge out of the sand throughout the beach.",
     "exits": {
       "e": "E-Beach-3",
       "w": "E-Beach-1"
+    }
+  }
+  "E-Beach-3": {
+    "name": "Oceanside Beach",
+    "description": "You are walking along the beach.  The sand meets the edge of a rocky shore continuing to the east.",
+    "exits": {
+      "e": "Cliffs-Base",
+      "w": "E-Beach-2"
+    }
+  }
+  "Rolling-Dunes": {
+    "name": "Rolling Dunes",
+    "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
+    "exits": {
+      "n": "Sandstorm",
+      "s": "Sandy-Shores"
+    }
+  }
+  "Sandstorm": {
+    "name": "Sandstorm",
+    "description": "You enter a swirling sandstorm.  The blowing sand blinds you and you lose all sense of direction.",
+    "exits": {
+      "n": "Rolling-Dunes",
+      "ne": "Rolling-Dunes",
+      "e": "Rolling-Dunes",
+      "se": "Rolling-Duness",
+      "s": "Rolling-Dunes",
+      "sw": "Rolling-Dunes",
+      "w": "Rolling-Dunes",
+      "nw": "Rolling-Dunes"
+    }
+  }
+  "Sandy-Forest": {
+    "name": "Sandy Forest",
+    "description": "You trudge through the hot sand.  The dunes extend en every direction as far as you can see.  The ocean is to the south.",
+    "exits": {
+      "e": "W-Beach-5",
+      "w": "Tangled-Roots"
+    }
+  }
+   "Tangled-Roots": {
+    "name": "Tangled Roots",
+    "description": "The tree roots tangle together making the beach impassable.",
+    "exits": {
+      "e": "Sandy-Forest"
+    }
+  }
+  "Cliffs-Base": {
+    "name": "Cliff's Base",
+    "description": "You are at the base of a towering sheer rock face.  The cliffs extend off into the dunes.  Occaisonally you hear a muffled boom rolling across the waves.",
+    "exits": {
+      "w": "E-Beach-3"
     }
   }
 }
