@@ -1,34 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>10-Room Text Adventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Adventure</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="game">
-    <h1>Text Adventure</h1>
-    <div id="room-description"></div>
-    <div id="items"></div>
-    <div id="inventory">Inventory: Empty</div>
+  <h1>Text Adventure</h1>
+  
+  <div id="room-description">Loading...</div>
 
-    <div id="compass">
-      <div class="row">
-        <button id="move-nw">NW</button>
-        <button id="move-n">N</button>
-        <button id="move-ne">NE</button>
-      </div>
-      <div class="row">
-        <button id="move-w">W</button>
-        <button disabled>•</button>
-        <button id="move-e">E</button>
-      </div>
-      <div class="row">
-        <button id="move-sw">SW</button>
-        <button id="move-s">S</button>
-        <button id="move-se">SE</button>
-      </div>
+  <!-- Items in the current room -->
+  <div id="items"></div>
+
+  <!-- Inventory -->
+  <div id="inventory">Inventory: Empty</div>
+
+  <!-- Navigation buttons -->
+  <div id="nav-grid" style="margin-top: 15px;">
+    <div>
+      <button id="btn-nw">NW</button>
+      <button id="btn-n">N</button>
+      <button id="btn-ne">NE</button>
+    </div>
+    <div>
+      <button id="btn-w">W</button>
+      <button disabled style="visibility:hidden;">•</button>
+      <button id="btn-e">E</button>
+    </div>
+    <div>
+      <button id="btn-sw">SW</button>
+      <button id="btn-s">S</button>
+      <button id="btn-se">SE</button>
+    </div>
+    <div style="margin-top: 10px;">
+      <button id="btn-u">Up</button>
+      <button id="btn-d">Down</button>
     </div>
   </div>
 
