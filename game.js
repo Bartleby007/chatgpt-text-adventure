@@ -5,8 +5,8 @@ let inventory = [];
 
 // Load both rooms and items
 Promise.all([
-  fetch("rooms.json").then(res => res.json()),
-  fetch("items.json").then(res => res.json())
+  fetch("rooms.json").then(res => res.json())
+//  fetch("items.json").then(res => res.json())
 ])
 .then(([roomsData, itemsData]) => {
   rooms = roomsData;
