@@ -1,56 +1,101 @@
+/* General page styles */
 body {
-  background-color: #1e1e1e;
-  color: #f1f1f1;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #f5f5f5;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title */
+h1 {
+  color: #ffdd88;
+  margin-bottom: 15px;
+}
+
+/* Room description box */
+#room-description {
+  background-color: #333;
+  border: 2px solid #555;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto 15px auto;
+  font-size: 1.1em;
+  line-height: 1.4em;
+}
+
+/* Items box */
+#items {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  padding: 8px;
+  border-radius: 6px;
+  max-width: 500px;
+  margin: 0 auto 10px auto;
+}
+
+#items button {
+  margin-left: 10px;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  background-color: #666;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#items button:hover {
+  background-color: #888;
+}
+
+/* Inventory box */
+#inventory {
+  background-color: #1f2f3f;
+  border: 1px solid #335;
+  padding: 8px;
+  border-radius: 6px;
+  max-width: 500px;
+  margin: 0 auto 15px auto;
+}
+
+/* Navigation grid */
+#nav-grid {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+#nav-grid div {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  margin: 3px 0;
 }
 
-#game {
-  text-align: center;
-  max-width: 600px;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
-
-#room-description {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  min-height: 60px;
-}
-
-#compass {
-  display: grid;
-  grid-template-columns: repeat(3, 80px);
-  grid-gap: 10px;
-  justify-content: center;
-}
-
-#compass .row {
-  display: contents;
-}
-
-#compass button {
-  padding: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #333;
-  color: white;
-  border: 1px solid #555;
+/* Navigation buttons */
+#nav-grid button {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 10px 14px;
+  margin: 2px;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  font-size: 0.9em;
+  cursor: pointer;
+  min-width: 50px;
 }
 
-#compass button:hover:enabled {
-  background-color: #555;
+#nav-grid button:hover:not(:disabled) {
+  background-color: #666;
 }
 
-#compass button:disabled {
-  opacity: 0.3;
+#nav-grid button:disabled {
+  background-color: #222;
+  color: #555;
   cursor: not-allowed;
+}
+
+/* Up/Down buttons */
+#btn-u, #btn-d {
+  min-width: 80px;
 }
