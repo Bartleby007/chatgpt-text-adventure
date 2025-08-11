@@ -1,70 +1,141 @@
 let rooms = {};
 let items = {};
-let currentRoom = "Circle-of-Light"; // starting room
+let useRules = [];
+let currentRoom = "Circle-of-Light";
 let inventory = [];
+let selectedItem = null;
 
-// Load both rooms and items
+// Load all JSON data before starting game
 Promise.all([
   fetch("rooms.json").then(res => res.json()),
-  fetch("items.json").then(res => res.json())
+  fetch("items.json").then(res => res.json()),
+  fetch("useRules.json").then(res => res.json())
 ])
-.then(([roomsData, itemsData]) => {
-  rooms = roomsData;
-  items = itemsData;
+.then(([roomData, itemData, ruleData]) => {
+  rooms = roomData;
+  items = itemData;
+  useRules = ruleData;
   updateRoom();
 })
 .catch(err => {
-  document.getElementById("room-description").textContent = "Failed to load game data.";
+  document.getElementById("room-description").innerText = "Failed to load game data.";
   console.error(err);
 });
 
 function updateRoom() {
   const room = rooms[currentRoom];
-  if (!room) {
-    document.getElementById("room-description").textContent = `Room "${currentRoom}" not found.`;
-    return;
+  document.getElementById("room-description").innerText = room.name + "\n" + room.description;
+
+  // Clear info panel (keep last event until new one triggered)
+  if (!selectedItem) {
+    document.getElementById("info-panel").innerText = "No new information.";
   }
 
-  document.getElementById("room-description").textContent = `${room.name}: ${room.description}`;
+  // Show items in current room
+  const itemsHere = Object.keys(items).filter(id => items[id].location === currentRoom);
+  const itemsDiv = document.getElementById("items");
+  itemsDiv.innerHTML = "";
+  if (itemsHere.length > 0) {
+    itemsHere.forEach(id => {
+      const btn = document.createElement("button");
+      btn.innerText = items[id].name;
+      btn.onclick = () => pickUpItem(id);
+      itemsDiv.appendChild(btn);
+    });
+  } else {
+    itemsDiv.innerHTML = "<em>No items here.</em>";
+  }
 
-  // Show movement buttons
+  // Update navigation buttons
   const directions = ["n","ne","e","se","s","sw","w","nw","u","d"];
   directions.forEach(dir => {
     const btn = document.getElementById(`btn-${dir}`);
     if (room.exits && room.exits[dir]) {
       btn.disabled = false;
-      btn.onclick = () => {
-        currentRoom = room.exits[dir];
-        updateRoom();
-      };
+      btn.onclick = () => moveToRoom(room.exits[dir]);
     } else {
       btn.disabled = true;
       btn.onclick = null;
     }
   });
 
-  // Show items in current room
-  const itemsHere = Object.entries(items)
-    .filter(([id, item]) => item.location === currentRoom)
-    .map(([id, item]) => ({ id, ...item }));
-
-  const itemsContainer = document.getElementById("items");
-  if (itemsHere.length > 0) {
-    itemsContainer.innerHTML = itemsHere.map(item =>
-      `${item.name} - ${item.description} <button onclick="takeItem('${item.id}')">Take</button>`
-    ).join("<br>");
+  // Update inventory display
+  const invDiv = document.getElementById("inventory");
+  invDiv.innerHTML = "";
+  if (inventory.length > 0) {
+    inventory.forEach(id => {
+      const btn = document.createElement("button");
+      btn.innerText = items[id].name;
+      btn.onclick = () => selectItem(id);
+      invDiv.appendChild(btn);
+    });
   } else {
-    itemsContainer.innerHTML = "";
+    invDiv.innerText = "Inventory: Empty";
   }
 
-  // Update inventory display
-  document.getElementById("inventory").textContent = `Inventory: ${inventory.map(i => i.name).join(", ") || "Empty"}`;
+  // Hide item actions if nothing selected
+  if (!selectedItem) {
+    document.getElementById("item-actions").style.display = "none";
+  }
 }
 
-function takeItem(itemId) {
-  if (items[itemId] && items[itemId].location === currentRoom) {
-    inventory.push({ id: itemId, name: items[itemId].name, description: items[itemId].description });
-    items[itemId].location = "inventory";
-    updateRoom();
+function moveToRoom(roomId) {
+  currentRoom = roomId;
+  updateRoom();
+}
+
+function pickUpItem(itemId) {
+  items[itemId].location = "inventory";
+  inventory.push(itemId);
+  updateRoom();
+}
+
+function selectItem(itemId) {
+  selectedItem = itemId;
+  document.getElementById("item-actions").style.display = "block";
+
+  // Assign actions
+  document.getElementById("action-use").onclick = () => useItem(itemId);
+  document.getElementById("action-drop").onclick = () => dropItem(itemId);
+  document.getElementById("action-inspect").onclick = () => inspectItem(itemId);
+}
+
+function useItem(itemId) {
+  const rule = useRules.find(r => r.itemId === itemId && r.roomId === currentRoom);
+  if (rule) {
+    document.getElementById("info-panel").innerText = rule.text;
+
+    // Apply effects
+    if (rule.effect) {
+      if (rule.effect.addItem) {
+        const newItem = rule.effect.addItem;
+        items[newItem.id] = {
+          name: newItem.name,
+          description: newItem.description,
+          location: newItem.location,
+          singleUse: newItem.singleUse || false
+        };
+      }
+      if (rule.effect.removeItemFromInventory) {
+        inventory = inventory.filter(id => id !== itemId);
+        delete items[itemId];
+        selectedItem = null;
+      }
+    }
+  } else {
+    document.getElementById("info-panel").innerText = "Nothing happens.";
   }
+  updateRoom();
+}
+
+function dropItem(itemId) {
+  items[itemId].location = currentRoom;
+  inventory = inventory.filter(id => id !== itemId);
+  selectedItem = null;
+  document.getElementById("info-panel").innerText = `You dropped the ${items[itemId].name}.`;
+  updateRoom();
+}
+
+function inspectItem(itemId) {
+  document.getElementById("info-panel").innerText = items[itemId].description;
 }
