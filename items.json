@@ -8,5 +8,10 @@
     "name": "Glowing Stone",
     "description": "A smooth flat stone that fits comfortably in the palm of your hand.  The stone emits a pale blue light and feels slightly warm.",
     "location": "Tangled-Roots"
+  },
+  "Green-Conch": {
+    "name": "Green Conch Shell",
+    "description": "A large green conch shell that used to be home to some unknown sea creature.",
+    "location": "Inventory-Hold"
   }
 }
