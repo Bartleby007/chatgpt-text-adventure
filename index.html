@@ -8,17 +8,18 @@
 </head>
 <body>
   <h1>Text Adventure</h1>
-  
+
+  <!-- Room Description -->
   <div id="room-description">Loading...</div>
 
-  <!-- Items in the current room -->
+  <!-- Information Panel -->
+  <div id="info-panel">No new information.</div>
+
+  <!-- Items in Room -->
   <div id="items"></div>
 
-  <!-- Inventory -->
-  <div id="inventory">Inventory: Empty</div>
-
-  <!-- Navigation buttons -->
-  <div id="nav-grid" style="margin-top: 15px;">
+  <!-- Navigation Buttons -->
+  <div id="nav-grid">
     <div>
       <button id="btn-nw">NW</button>
       <button id="btn-n">N</button>
@@ -38,6 +39,16 @@
       <button id="btn-u">Up</button>
       <button id="btn-d">Down</button>
     </div>
+  </div>
+
+  <!-- Inventory -->
+  <div id="inventory">Inventory: Empty</div>
+
+  <!-- Item Actions (appears when an inventory item is selected) -->
+  <div id="item-actions" style="display:none;">
+    <button id="action-use">Use</button>
+    <button id="action-drop">Drop</button>
+    <button id="action-inspect">Inspect</button>
   </div>
 
   <script src="game.js"></script>

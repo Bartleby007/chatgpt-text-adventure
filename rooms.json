@@ -1,4 +1,8 @@
 {
+  "Inventory-Hold": {
+    "name": "Inventory Hold",
+    "description": "This room is to hold offscreen inventory."
+  },
   "Circle-of-Light": {
     "name": "Circle of Light",
     "description": "You are standing in a circle of light.  All around you is an inpenetrable darkness.  The circle of light has a faint rainbow around its perimeter.",

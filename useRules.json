@@ -1,0 +1,16 @@
+[
+  {
+    "itemId": "Shovel",
+    "roomId": "Cliffs-Base",
+    "text": "You dig into the soft soil and uncover a buried chest!",
+    "effect": {
+      "addItem": {
+        "id": "Chest",
+        "name": "Wooden Chest",
+        "description": "An old chest bound with rusty iron. It looks like it might be locked.",
+        "location": "Cliffs-Base",
+        "singleUse": false
+      }
+    }
+  }
+]
