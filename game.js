@@ -26,12 +26,7 @@ function updateRoom() {
   const room = rooms[currentRoom];
   document.getElementById("room-description").innerText = room.name + "\n" + room.description;
 
-  // Clear info panel (keep last event until new one triggered)
-  if (!selectedItem) {
-    document.getElementById("info-panel").innerText = "No new information.";
-  }
-
-  // Show items in current room
+  // Items in current room
   const itemsHere = Object.keys(items).filter(id => items[id].location === currentRoom);
   const itemsDiv = document.getElementById("items");
   itemsDiv.innerHTML = "";
@@ -46,7 +41,7 @@ function updateRoom() {
     itemsDiv.innerHTML = "<em>No items here.</em>";
   }
 
-  // Update navigation buttons
+  // Navigation buttons
   const directions = ["n","ne","e","se","s","sw","w","nw","u","d"];
   directions.forEach(dir => {
     const btn = document.getElementById(`btn-${dir}`);
@@ -59,7 +54,7 @@ function updateRoom() {
     }
   });
 
-  // Update inventory display
+  // Inventory display
   const invDiv = document.getElementById("inventory");
   invDiv.innerHTML = "";
   if (inventory.length > 0) {
@@ -80,6 +75,8 @@ function updateRoom() {
 }
 
 function moveToRoom(roomId) {
+  selectedItem = null; // deselect any item
+  document.getElementById("info-panel").innerText = "No new information."; // reset here only
   currentRoom = roomId;
   updateRoom();
 }
@@ -104,8 +101,6 @@ function useItem(itemId) {
   const rule = useRules.find(r => r.itemId === itemId && r.roomId === currentRoom);
   if (rule) {
     document.getElementById("info-panel").innerText = rule.text;
-
-    // Apply effects
     if (rule.effect) {
       if (rule.effect.addItem) {
         const newItem = rule.effect.addItem;
@@ -119,23 +114,28 @@ function useItem(itemId) {
       if (rule.effect.removeItemFromInventory) {
         inventory = inventory.filter(id => id !== itemId);
         delete items[itemId];
-        selectedItem = null;
       }
     }
   } else {
     document.getElementById("info-panel").innerText = "Nothing happens.";
   }
+  selectedItem = null; // hide menu after action
+  document.getElementById("item-actions").style.display = "none";
   updateRoom();
 }
 
 function dropItem(itemId) {
   items[itemId].location = currentRoom;
   inventory = inventory.filter(id => id !== itemId);
-  selectedItem = null;
   document.getElementById("info-panel").innerText = `You dropped the ${items[itemId].name}.`;
+  selectedItem = null; // hide menu after action
+  document.getElementById("item-actions").style.display = "none";
   updateRoom();
 }
 
 function inspectItem(itemId) {
   document.getElementById("info-panel").innerText = items[itemId].description;
+  selectedItem = null;
+  document.getElementById("item-actions").style.display = "none";
+  updateRoom(); // now won't overwrite info panel
 }
