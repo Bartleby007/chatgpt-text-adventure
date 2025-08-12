@@ -136,7 +136,11 @@ function useItem(itemId) {
       }
       if (rule.effect.moveItem) {
         const moveId = rule.effect.moveItem.id;
-        items[moveId].location = rule.effect.moveItem.location;
+        
+        // Only move if it's currently in the Inventory-Hold
+        if (items[moveId].location === "Inventory-Hold") {
+          items[moveId].location = rule.effect.moveItem.location;
+        }
       }
       if (rule.effect.removeItemFromInventory) {
         inventory = inventory.filter(id => id !== itemId);
