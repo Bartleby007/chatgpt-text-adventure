@@ -87,8 +87,15 @@ function moveToRoom(roomId) {
   roomEvents.forEach(event => {
     if (event.roomId === currentRoom) {
       let conditionMet = true;
-      if (event.condition && event.condition.hasItem) {
-        conditionMet = inventory.includes(event.condition.hasItem);
+      if (event.condition) {
+        if (event.condition.hasItem) {
+          conditionMet = inventory.includes(event.condition.hasItem);
+        }
+        if (conditionMet && event.condition.itemLocation) {
+          const checkItem = event.condition.itemLocation.id;
+          const requiredLoc = event.condition.itemLocation.location;
+          conditionMet = items[checkItem].location === requiredLoc;
+        }
       }
       if (conditionMet) {
         document.getElementById("info-panel").innerText = event.text;
