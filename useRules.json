@@ -14,6 +14,16 @@
     "itemId": "Shovel",
     "default": true,
     "text": "You dig for a while, but find nothing new."
+  },
+  {
+    "itemId": "Glowing-Stone",
+    "default": true,
+    "text": "You stare at the stone for a few minutes but nothing happens."
+  },
+  {
+    "itemId": "Green-Conch",
+    "default": true,
+    "text": "You put your ear up to the shell and can hear the ocean.  The sound gradually fades into a deep silence for a few seconds."
   }
 ]
 
