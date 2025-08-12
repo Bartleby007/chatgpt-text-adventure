@@ -1,16 +1,19 @@
 [
   {
     "itemId": "Shovel",
-    "roomId": "Cliffs-Base",
-    "text": "You dig into the soft soil and uncover a buried chest!",
+    "roomId": "E-Beach-3",
+    "text": "You dig in the sand and uncover a large green conch shell.",
     "effect": {
-      "addItem": {
-        "id": "Chest",
-        "name": "Wooden Chest",
-        "description": "An old chest bound with rusty iron. It looks like it might be locked.",
-        "location": "Cliffs-Base",
-        "singleUse": false
+      "moveItem": {
+        "id": "Green-Conch",
+        "location": "E-Beach-3"
       }
     }
+  },
+  {
+    "itemId": "Shovel",
+    "default": true,
+    "text": "You dig for a while, but find nothing new."
   }
 ]
+
