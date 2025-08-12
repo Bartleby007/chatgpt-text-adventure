@@ -4,17 +4,20 @@ let useRules = [];
 let currentRoom = "Circle-of-Light";
 let inventory = [];
 let selectedItem = null;
+let roomEvents = [];
 
 // Load all JSON data before starting game
 Promise.all([
   fetch("rooms.json").then(res => res.json()),
   fetch("items.json").then(res => res.json()),
-  fetch("useRules.json").then(res => res.json())
+  fetch("useRules.json").then(res => res.json()),
+  fetch("roomEvents.json").then(res => res.json())
 ])
-.then(([roomData, itemData, ruleData]) => {
+.then(([roomData, itemData, ruleData, roomEventsData]) => {
   rooms = roomData;
   items = itemData;
   useRules = ruleData;
+  roomEvents = roomEventsData;
   updateRoom();
 })
 .catch(err => {
@@ -79,6 +82,19 @@ function moveToRoom(roomId) {
   document.getElementById("info-panel").innerText = "No new information."; // reset here only
   currentRoom = roomId;
   updateRoom();
+  
+  // Check for passive room events
+  roomEvents.forEach(event => {
+    if (event.roomId === currentRoom) {
+      let conditionMet = true;
+      if (event.condition && event.condition.hasItem) {
+        conditionMet = inventory.includes(event.condition.hasItem);
+      }
+      if (conditionMet) {
+        document.getElementById("info-panel").innerText = event.text;
+      }
+    }
+  });
 }
 
 function pickUpItem(itemId) {
@@ -98,9 +114,16 @@ function selectItem(itemId) {
 }
 
 function useItem(itemId) {
-  const rule = useRules.find(r => r.itemId === itemId && r.roomId === currentRoom);
+  let rule = useRules.find(r => r.itemId === itemId && r.roomId === currentRoom);
+
+  // If no exact match, check for default rule
+  if (!rule) {
+    rule = useRules.find(r => r.itemId === itemId && r.default);
+  }
+
   if (rule) {
     document.getElementById("info-panel").innerText = rule.text;
+
     if (rule.effect) {
       if (rule.effect.addItem) {
         const newItem = rule.effect.addItem;
@@ -111,6 +134,24 @@ function useItem(itemId) {
           singleUse: newItem.singleUse || false
         };
       }
+      if (rule.effect.moveItem) {
+        const moveId = rule.effect.moveItem.id;
+        
+        // Check if the item is in the hidden location
+        if (items[moveId].location === "Inventory-Hold") {
+          items[moveId].location = rule.effect.moveItem.location;
+        } else {
+          // Item already moved — show default message instead
+          let defaultRule = useRules.find(r => r.itemId === itemId && r.default);
+          if (defaultRule) {
+            document.getElementById("info-panel").innerText = defaultRule.text;
+            selectedItem = null;
+            document.getElementById("item-actions").style.display = "none";
+            updateRoom();
+            return; // Exit early so success text isn't shown
+          }
+        }
+      }
       if (rule.effect.removeItemFromInventory) {
         inventory = inventory.filter(id => id !== itemId);
         delete items[itemId];
@@ -119,10 +160,12 @@ function useItem(itemId) {
   } else {
     document.getElementById("info-panel").innerText = "Nothing happens.";
   }
-  selectedItem = null; // hide menu after action
+
+  selectedItem = null;
   document.getElementById("item-actions").style.display = "none";
   updateRoom();
 }
+
 
 function dropItem(itemId) {
   items[itemId].location = currentRoom;
