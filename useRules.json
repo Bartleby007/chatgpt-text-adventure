@@ -1,12 +1,12 @@
 [
   {
     "itemId": "Shovel",
-    "roomId": "E-Beach-3",
+    "roomId": "W-Beach-5",
     "text": "You dig in the sand and uncover a large green conch shell.",
     "effect": {
       "moveItem": {
         "id": "Green-Conch",
-        "location": "E-Beach-3"
+        "location": "W-Beach-5"
       }
     }
   },
