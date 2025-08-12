@@ -137,9 +137,19 @@ function useItem(itemId) {
       if (rule.effect.moveItem) {
         const moveId = rule.effect.moveItem.id;
         
-        // Only move if it's currently in the Inventory-Hold
+        // Check if the item is in the hidden location
         if (items[moveId].location === "Inventory-Hold") {
           items[moveId].location = rule.effect.moveItem.location;
+        } else {
+          // Item already moved — show default message instead
+          let defaultRule = useRules.find(r => r.itemId === itemId && r.default);
+          if (defaultRule) {
+            document.getElementById("info-panel").innerText = defaultRule.text;
+            selectedItem = null;
+            document.getElementById("item-actions").style.display = "none";
+            updateRoom();
+            return; // Exit early so success text isn't shown
+          }
         }
       }
       if (rule.effect.removeItemFromInventory) {
