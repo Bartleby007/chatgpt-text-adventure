@@ -1,8 +1,12 @@
 [
   {
-    "roomId": "W-Beach-5",
+    "roomId": "E-Beach-3",
     "condition": {
-      "hasItem": "Glowing-Stone"
+      "hasItem": "Glowing-Stone",
+      "itemLocation": {
+        "id": "Green-Conch",
+        "location": "Inventory-Hold"
+      }
     },
     "text": "The Glowing Stone vibrates faintly in your hand."
   }
