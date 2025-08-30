@@ -135,5 +135,13 @@
     "exits": {
       "w": "E-Beach-3"
     }
+  },
+  "Salt-Plains": {
+    "name": "Salt Plains",
+    "description": "You are in a wide open plain filled with scrubby grass.  You smell a salty breeze as you walk through the mix of sand and grass.",
+    "exits": {
+      "n": "Grassy-Plains",
+      "s": "Rolling-Dunes"
+    }
   }
 }
